@@ -67,8 +67,6 @@ training:
   learning_rate: 0.001
   weight_decay: 0.0001
   model_dir: ./models
-  checkpoints: true
-  checkpoint_dir: ./checkpoints
 
 walkers:
   time_step: 0.01

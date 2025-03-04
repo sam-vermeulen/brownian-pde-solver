@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Generator, Tuple
 import torch
 from src.domain import Domain, RectPortalDomain
 from src.process.gaussian import GaussianIncrements
@@ -20,7 +20,7 @@ class BatchCollector():
 
     # update step for walkers, yields old positions, new positions, which points have exited domain,
     # and the point of intersection with the domain along the line between new and old points
-    def __iter__(self):
+    def __iter__(self) -> Generator[tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]]:
         while self.remaining_walkers > 0:
 
             old_points = self.points.clone()
