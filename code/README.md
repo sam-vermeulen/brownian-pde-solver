@@ -85,9 +85,9 @@ hardware:
 ├── data/                 # Data storage
 ├── logs/                 # TensorBoard logs
 ├── models/               # Saved models
-└── scripts/              # Saved models
-    ├── generate_walks.py # CLI for generating random walks 
-    ├── train.py          # CLI for training models 
+├── scripts/              # Saved models
+│   ├── generate_walks.py # CLI for generating random walks 
+│   ├── train.py          # CLI for training models 
 └── src/
     ├── domain/           # Domain definitions
     ├── models/           # Neural network models
