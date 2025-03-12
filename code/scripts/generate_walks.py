@@ -42,7 +42,7 @@ def generate_walks(batch_size, num_exits, time_step, portal_args, seed=None):
 
     walks = pd.DataFrame(history).explode(['old_point', 'new_point', 'exited', 'intersection'])
     
-    walks['time_step'] = time_step
+    walks['time_step'] = time_step.item()
     walks['seed'] = seed
 
     return walks
@@ -71,7 +71,7 @@ def main():
    
     print(f"Using device: {device}")
 
-    time_step = args.time_step
+    time_step = torch.tensor(args.time_step)
     num_exits = args.num_exits
     batch_size = (args.batch_size,)
     seed = args.random_seed

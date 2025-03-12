@@ -72,7 +72,7 @@ class TDFeynmanSolver():
         with tqdm(total=self.collector.max_exits, unit='exits') as pbar:
             for i, (start, end, exited, clipped) in enumerate(self.collector):
                 self.model.train()
-                u_end = torch.where(exited[:, None], self.g_estimate_improved(start, end, clipped)[:, None], self.model(end).detach())
+                u_end = torch.where(exited[:, None], self.g_estimate(start, end, clipped)[:, None], self.model(end).detach())
 
                 loss = self.loss_fn(start, end, u_end)
 
