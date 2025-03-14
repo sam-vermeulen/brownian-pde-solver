@@ -38,8 +38,11 @@ def compute_probs(end, barrier, step_size):
 
     late_probs = expected_hit_time / late_time
     early_probs = 1 - late_probs - miss_probs
+    
+    stacked = torch.stack([miss_probs, late_probs, early_probs])
+    prob = stacked.permute(1, 2, 0)
 
-    return torch.stack([miss_probs, late_probs, early_probs]).permute(1, 2, 0)
+    return prob
 
 def estimate_prob_to_hit_first(prob_tensor, n_dims, component, permutations, scoring_tensor, device=None):
     if device == None:

@@ -54,8 +54,8 @@ class TDFeynmanSolver():
 
     def g_estimate(self, start: torch.Tensor, end: torch.Tensor, clipped: torch.Tensor) -> torch.Tensor | int:
         self.plot_name = "old"
-        values = torch.where(torch.isclose(clipped[:, 1], self.collector.domain.boundaries[1, 1]) | torch.isclose(clipped[:, 1], self.collector.domain.boundaries[1, 0]), 1, 0)
-        return values
+        est_bv = torch.where(torch.isclose(clipped[:, 1], self.collector.domain.boundaries[1, 1]) | torch.isclose(clipped[:, 1], self.collector.domain.boundaries[1, 0]), 1, 0)
+        return est_bv 
 
     def f_estimate(self, end: torch.Tensor) -> torch.Tensor:
         values = torch.zeros(end.shape[:-1], device=self.device)
